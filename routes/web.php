@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,14 +25,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // admin/pengguna login
 Route::get('redirects',[IndexController::class,'index']);
+
+//------------------------------------admin------------------------------------------------//
 //admin akses fitur list pengguna
-Route::get('redirects/listpengguna',[IndexController::class,'listpengguna']);
-Route::put('redirects/listpengguna',[IndexController::class,'updatepengguna']);
-Route::delete('redirects/listpengguna',[IndexController::class,'destroypengguna']);
+Route::get('redirects/listpengguna',[AdminController::class,'listpengguna']);
+Route::put('redirects/listpengguna',[AdminController::class,'updatepengguna']);
+Route::delete('redirects/listpengguna',[AdminController::class,'destroypengguna']);
 //admin akses fitur list order
-Route::get('redirects/listorder',[IndexController::class,'listorder']);
-Route::put('redirects/listorder',[IndexController::class,'updateorder']);
-Route::delete('redirects/listorder',[IndexController::class,'destroyorder']);
+Route::get('redirects/listorder',[AdminController::class,'listorder']);
+Route::put('redirects/listorder',[AdminController::class,'updateorder']);
+Route::delete('redirects/listorder',[AdminController::class,'destroyorder']);
 //admin akses fitur list pembayaran
-Route::get('redirects/listpembayaran',[IndexController::class,'listpembayaran']);
-Route::delete('redirects/listpembayaran',[IndexController::class,'destroypembayaran']);
+Route::get('redirects/listpembayaran',[AdminController::class,'listpembayaran']);
+Route::delete('redirects/listpembayaran',[AdminController::class,'destroypembayaran']);
+
+//------------------------------------user------------------------------------------------//
