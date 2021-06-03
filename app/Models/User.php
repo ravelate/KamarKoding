@@ -62,4 +62,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+    public function langganans()
+    {
+        return $this->belongsToMany(Langganan::class,"users_langganans");
+    }
 }

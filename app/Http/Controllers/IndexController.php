@@ -12,13 +12,19 @@ class IndexController extends Controller
         if($role == '1'){
             return view('admin/dashboard');
         }else {
-            return view('dashboard');
+            return view('user/dashboard');
         }
     }
     // ini buat list pengguna doang
     public function listPengguna() {
-        $data= Auth::user()->get();
+        $role=Auth::user()->role;
+        if($role == '1'){
+            $data= Auth::user()->get();
         return view('admin/listusers',compact(['data']));
+        }else {
+            return redirect('/redirects');
+        }
+    
     }
     public function updatepengguna(Request $request)
     {
@@ -42,9 +48,14 @@ class IndexController extends Controller
 
         // ini buat list order doang
         public function listorder() {
+            $role=Auth::user()->role;
+        if($role == '1'){
             $data= Order::get();
             $datauser= Auth::user()->get();
             return view('admin/listorder',['data' => $data],['datauser' => $datauser]);
+        }else {
+            return redirect('/redirects');
+        }
         }
         public function updateorder(Request $request)
         {
@@ -67,8 +78,13 @@ class IndexController extends Controller
         // end list order doang
          // ini buat list pembayaran doang
          public function listpembayaran() {
-            $data= Pembayaran::get();
+            $role=Auth::user()->role;
+            if($role == '1'){
+                $data= Pembayaran::get();
             return view('admin/listpembayaran',compact(['data']));
+            }else {
+                return redirect('/redirects');
+            }
         }
         public function updatepembayaran(Request $request)
         {
