@@ -14,6 +14,7 @@ class IndexController extends Controller
             return view('admin/dashboard');
         }else {
             $dataLangganan= Langganan::with('users')->get();
+            // dd($dataLangganan);
             return view('user/dashboard',compact(['dataLangganan']));
         }
     }

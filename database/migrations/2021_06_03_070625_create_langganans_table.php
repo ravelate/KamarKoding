@@ -16,7 +16,7 @@ class CreateLangganansTable extends Migration
         Schema::create('langganans', function (Blueprint $table) {
             $table->id();
             $table->string('nama_langganan');
-            $table->string('keterangan');
+            $table->text('keterangan');
             $table->string('harga');
             $table->string('gambar');
             $table->timestamps();

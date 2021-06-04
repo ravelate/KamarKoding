@@ -101,7 +101,7 @@
               <span>Kontrol Kelas</span>
               </a>
             <ul class="sub">
-              <li><a href="/redirects/listkelas">List Kelas</a></li>
+              <li><a href="advanced_form_components.html">List Kelas</a></li>
               <li><a href="form_validation.html">Tambah Kelas Pengguna</a></li>
             </ul>
           </li>
@@ -311,39 +311,82 @@
                           <div class="col-sm-5">
                               <h2>User <b>Management</b></h2>
                           </div>
-                          
+                          <div class="col-sm-7">
+                              {{-- Ini Tombol Tambah --}}
+                            <a class="btn btn-secondary" data-toggle="modal" data-target="#tambah"><i class="material-icons">&#xE147;</i> <span>Tambah Kelas Baru</span></a>
+                             <div id="tambah" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      
+                                  </div>
+                                  <form action="" method="POST" enctype="multipart/from-data">
+                                  @method('POST')
+                                  @csrf
+                                      <div class="modal-body">
+                                      
+                                          <div class="from-group">
+                                              <label class="control-label" for="nm_brg"> Nama: </label>
+                                              <input type="text" name="name" class="from-control" id="nm_brg" required>
+                                          </div>
+                                          <div class="from-group">
+                                              <label class="control-label" for="hrg_brg"> Email: </label>
+                                              <input type="text" name="email" class="from-control" id="hrg_brg" required>
+                                      </div>
+                                      <div class="from-group">
+                                        <label class="control-label" for="role">Integritas: </label>
+                                         <select class="from-control" name="role">
+                                            <option value="1">Admin</option>
+                                            <option value="0">Pelajar</option>  
+                                         </select>
+                                      </div>
+                                      
+                                      <div class="modal-footer">
+                                          <button type="reset" class="btn btn-danger">Reset</button>
+                                          <input type="submit" class="btn btn-success" value="Save">
+                                      </div>
+                                      </div>
+                                      </form>
+                                      </div>
+                                      </div>
+                                      </div>
+                                      {{-- end tombol edit --}}	
+                        </div>
                       </div>
                   </div>
                   <table class="table table-striped table-hover">
                       <thead>
                           <tr>
                               <th>#</th>
-                              <th>Nama</th>						
-                              <th>tanggal dibuat</th>
-                              <th>Email</th>
-                              <th>Status</th>
-                              <th>Action</th>
+                              <th>Nama Kelas</th>						
+                              <th>Keterangan</th>
+                              <th>Harga</th>
+                              <th>Jumlah Pelajar</th>
+                              <th>Dibuat pada</th>
                           </tr>
                       </thead>
                       <tbody>
-                         @foreach ($data as $d)
+                         @foreach ($dataLangganan as $d)
                          <tr>
                           <td>{{$d->id}}</td>
-                          <td><a>{{$d->name}}</a></td>
-                          <td>{{$d->created_at}}</td> 
-                          <td>{{$d->email}}</td>
-                          @if ($d->role == 1)
+                          <td><a>{{$d->nama_langganan}}</a></td>
+                          <td>{{$d->keterangan}}</td> 
+                          <td>{{$d->harga}}</td>
+                          <td>{{$d->users->count()}}</td>
+                          <td>{{$d->created_at}}</td>
+                          {{-- @if ($d->role == 1)
                           <td>Admin</td>
                           @else
                           <td>Pelajar</td>
-                          @endif                       
+                          @endif                        --}}
                          
                           {{-- <td><span class="status text-success">&bull;</span> Active</td> --}}
                           <td>
                             
                              <!-- ini tombol edit -->
                       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$d->id}}" data-formid="{{$d->id}}">Edit</button>
-                      <div id="edit{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
+                      {{-- <div id="edit{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
                           <div class="modal-dialog">
                               <div class="modal-content">
                                   <div class="modal-header">
@@ -380,7 +423,7 @@
                                       </form>
                                       </div>
                                       </div>
-                                      </div>
+                                      </div> --}}
                                       {{-- end tombol edit --}}
                                       
                               <!-- ini tombol hapus -->

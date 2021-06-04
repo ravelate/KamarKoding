@@ -27,6 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('redirects',[IndexController::class,'index']);
 
 //------------------------------------admin------------------------------------------------//
+// ::::::::::::::::::::::::::::::::::: Data Pengguna ::::::::::::::::::::::::::::::::::::: //
 //admin akses fitur list pengguna
 Route::get('redirects/listpengguna',[AdminController::class,'listpengguna']);
 Route::put('redirects/listpengguna',[AdminController::class,'updatepengguna']);
@@ -38,5 +39,11 @@ Route::delete('redirects/listorder',[AdminController::class,'destroyorder']);
 //admin akses fitur list pembayaran
 Route::get('redirects/listpembayaran',[AdminController::class,'listpembayaran']);
 Route::delete('redirects/listpembayaran',[AdminController::class,'destroypembayaran']);
+// ::::::::::::::::::::::::::::::::::: Kontrol Kelas ::::::::::::::::::::::::::::::::::::: //
+//admin akses fitur List Kelas
+Route::get('redirects/listkelas',[AdminController::class,'listkelas']);
+Route::post('redirect/listkelas', [AdminController::class,'storekelas']);
+Route::put('redirects/listkelas',[AdminController::class,'updatekelas']);
+Route::delete('redirects/listkelas',[AdminController::class,'destroykelas']);
 
 //------------------------------------user------------------------------------------------//

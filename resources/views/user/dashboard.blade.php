@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>ADMIN - List</title>
+  <title>Dashboard</title>
 
   <!-- Favicons -->
   <link href="adminassets/img/favicon.png" rel="icon">
@@ -149,7 +149,7 @@
     <section id="events" class="events">
       <div class="container" data-aos="fade-up">
         <div class="row">
-          S
+          
           @foreach ($dataLangganan as $langganan)
           <div class="col-md-6 d-flex align-items-stretch">
             <div class="card">
@@ -161,7 +161,15 @@
                 <p class="fst-italic text-center">{{$langganan->harga}}</p>
                 <p class="card-text">{{$langganan->keterangan}}</p>
                 <div class="col text-center">
-                  <button type="button" class="btn btn-success btn-lg">buka</button>
+                  @if ($langganan->users->count() > 0)
+                  @foreach ($langganan->users as $p)
+                    @if ($langganan->id == $p->pivot->langganan_id)
+                    <button type="button" class="btn btn-success btn-lg">buka</button>
+                    @endif
+                  @endforeach
+                  @else
+                  <button type="button" class="btn btn-success btn-lg">Beli</button>
+                  @endif
                 </div>
               </div>
             </div>
