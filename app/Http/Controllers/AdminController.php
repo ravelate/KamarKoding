@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Pembayaran;
 use App\Models\Langganan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -114,24 +115,43 @@ class AdminController extends Controller
             return redirect('/redirects');
         }
     }
-    public function storekelas(Request $request)
+    public function storeKelas(Request $request)
     {
-        Author::create($request->all());
-        return redirect('author')->with('sukses', 'Data berhasil diinput');
+        // dd($request);
+        Langganan::create($request->all());
+        return redirect('redirects/listkelas')->with('sukses', 'Data berhasil diinput');
     }
 
     public function updateKelas(Request $request)
     {
         // dd($request);
-        $pengguna = Auth::user()->find($request->id);
+        $pengguna = Langganan::findOrFail($request->id);
         $pengguna->update($request->all());
-        return redirect('redirects/listpengguna')->with('sukses', 'Data berhasil diupdate');
+        return redirect('redirects/listkelas')->with('sukses', 'Data berhasil diupdate');
     }
     public function destroyKelas(Request $request)
     {
-        $pengguna = Auth::user()->find($request->id);
+        $pengguna = Langganan::findOrFail($request->id);
         $pengguna->delete();
         return redirect('redirects/listpengguna')->with('sukses', 'Data berhasil dihapus');
     }
     // end list kelas doang
+    // ini buat tambah kelas pengguna
+    public function tambahKelas() {
+        $role=Auth::user()->role;
+        if($role == '1'){
+            $dataLangganan= Langganan::get();
+        return view('admin/tambahkelas',compact(['dataLangganan']));
+        }else {
+            return redirect('/redirects');
+        }
+    }
+    public function addKelas(Request $request)
+    {
+        // dd($request);  
+        if($request->get('user_id')) {
+            Langganan::findOrfail($request->id)->users()->attach($request->get('user_id'));
+        }
+        return redirect('redirects/tambahkelas')->with('sukses', 'Data berhasil diinput');
+    }
 }

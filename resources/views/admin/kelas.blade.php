@@ -20,7 +20,7 @@
   <!-- Custom styles for this template -->
   <link href="{{ asset('adminassets/css/style.css')}}" rel="stylesheet">
   <link href="{{ asset('adminassets/css/style-responsive.css')}}" rel="stylesheet">
-
+  
 </head>
 
 <body>
@@ -309,7 +309,7 @@
                   <div class="table-title">
                       <div class="row">
                           <div class="col-sm-5">
-                              <h2>User <b>Management</b></h2>
+                              <h2>Kelas <b>Management</b></h2>
                           </div>
                           <div class="col-sm-7">
                               {{-- Ini Tombol Tambah --}}
@@ -321,27 +321,27 @@
                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                                       
                                   </div>
-                                  <form action="" method="POST" enctype="multipart/from-data">
-                                  @method('POST')
+                                  <form action="" method="POST" enctype="multipart/from-data">  
+                                                  
                                   @csrf
                                       <div class="modal-body">
                                       
                                           <div class="from-group">
-                                              <label class="control-label" for="nm_brg"> Nama: </label>
-                                              <input type="text" name="name" class="from-control" id="nm_brg" required>
+                                              <label class="control-label" for="nm_brg" style="color: black"> Nama Kelas: </label>
+                                              <input type="text" name="nama_langganan" class="from-control" id="nm_brg" style="color: black" required>
                                           </div>
                                           <div class="from-group">
-                                              <label class="control-label" for="hrg_brg"> Email: </label>
-                                              <input type="text" name="email" class="from-control" id="hrg_brg" required>
+                                              <label class="control-label" for="hrg_brg" style="color: black"> keterangan: </label>
+                                              <input type="text" name="keterangan" class="from-control" id="hrg_brg" style="color: black" required>
                                       </div>
                                       <div class="from-group">
-                                        <label class="control-label" for="role">Integritas: </label>
-                                         <select class="from-control" name="role">
-                                            <option value="1">Admin</option>
-                                            <option value="0">Pelajar</option>  
-                                         </select>
+                                        <label class="control-label" for="hrg_brg" style="color: black"> harga: </label>
+                                        <input type="text" name="harga" class="from-control" id="hrg_brg" style="color: black" required>
+                                            </div>
+                                                    <div class="from-group">
+                                              <label class="control-label" for="hrg_brg" style="color: black"> link Gambar: </label>
+                                              <input type="text" name="gambar" class="from-control" id="hrg_brg" style="color: black" required>
                                       </div>
-                                      
                                       <div class="modal-footer">
                                           <button type="reset" class="btn btn-danger">Reset</button>
                                           <input type="submit" class="btn btn-success" value="Save">
@@ -351,7 +351,7 @@
                                       </div>
                                       </div>
                                       </div>
-                                      {{-- end tombol edit --}}	
+                                      {{-- end tombol tambah --}}	
                         </div>
                       </div>
                   </div>
@@ -364,6 +364,7 @@
                               <th>Harga</th>
                               <th>Jumlah Pelajar</th>
                               <th>Dibuat pada</th>
+                              <th>Actions</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -375,59 +376,52 @@
                           <td>{{$d->harga}}</td>
                           <td>{{$d->users->count()}}</td>
                           <td>{{$d->created_at}}</td>
-                          {{-- @if ($d->role == 1)
-                          <td>Admin</td>
-                          @else
-                          <td>Pelajar</td>
-                          @endif                        --}}
-                         
-                          {{-- <td><span class="status text-success">&bull;</span> Active</td> --}}
-                          <td>
-                            
+                          
+                            <td>
                              <!-- ini tombol edit -->
                       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$d->id}}" data-formid="{{$d->id}}">Edit</button>
-                      {{-- <div id="edit{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
+                      <div id="edit{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
                           <div class="modal-dialog">
                               <div class="modal-content">
                                   <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                                       
                                   </div>
-                                  <form action="" method="POST" enctype="multipart/from-data">
+                                  <form action="" method="post" enctype="multipart/from-data">
                                   @method('PUT')
                                   @csrf
                                   <input type="hidden" name="id" value="{{$d->id}}">
-                                      <div class="modal-body">
+                                  <div class="modal-body">
                                       
-                                          <div class="from-group">
-                                              <label class="control-label" for="nm_brg"> Nama: </label>
-                                              <input type="text" name="name" class="from-control" id="nm_brg" value="{{$d->name}}" required>
-                                          </div>
-                                          <div class="from-group">
-                                              <label class="control-label" for="hrg_brg"> Email: </label>
-                                              <input type="text" name="email" class="from-control" id="hrg_brg" value="{{$d->email}}"required>
+                                    <div class="from-group">
+                                        <label class="control-label" for="nm_brg" style="color: black"> Nama Kelas: </label>
+                                        <input type="text" name="nama_langganan" class="from-control" id="nm_brg" style="color: black" value="{{$d->nama_langganan}}" required>
+                                    </div>
+                                    <div class="from-group">
+                                        <label class="control-label" for="hrg_brg" style="color: black"> keterangan: </label>
+                                        <input type="text" name="keterangan" class="from-control" id="hrg_brg" style="color: black" value="{{$d->keterangan}}" required>
+                                </div>
+                                <div class="from-group">
+                                  <label class="control-label" for="hrg_brg" style="color: black"> harga: </label>
+                                  <input type="text" name="harga" class="from-control" id="hrg_brg" style="color: black" value="{{$d->harga}}" required>
                                       </div>
-                                      <div class="from-group">
-                                        <label class="control-label" for="role">Integritas: </label>
-                                         <select class="from-control" name="role">
-                                            <option value="1">Admin</option>
-                                            <option value="0">Pelajar</option>  
-                                         </select>
-                                      </div>
-                                      
-                                      <div class="modal-footer">
-                                          <button type="reset" class="btn btn-danger">Reset</button>
-                                          <input type="submit" class="btn btn-success" value="Save">
-                                      </div>
+                                              <div class="from-group">
+                                        <label class="control-label" for="hrg_brg" style="color: black"> link Gambar: </label>
+                                        <input type="text" name="gambar" class="from-control" id="hrg_brg" style="color: black" value="{{$d->gambar}}" required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                    <input type="submit" class="btn btn-success" value="Save">
+                                </div>
                                       </div>
                                       </form>
                                       </div>
                                       </div>
-                                      </div> --}}
+                                      </div>
                                       {{-- end tombol edit --}}
                                       
                               <!-- ini tombol hapus -->
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{$d->id}}" data-formid="{{$d->id}}">Hapus</button>
+                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{$d->id}}" data-formid="{{$d->id}}">Hapus</button>
                       <div id="hapus{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
                           <div class="modal-dialog">
                               <div class="modal-content">

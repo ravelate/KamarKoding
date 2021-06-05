@@ -102,7 +102,7 @@
               </a>
             <ul class="sub">
               <li><a href="/redirects/listkelas">List Kelas</a></li>
-              <li><a href="form_validation.html">Tambah Kelas Pengguna</a></li>
+              <li><a href="/redirects/tambahkelas">Tambah Kelas Pengguna</a></li>
             </ul>
           </li>
           <li class="sub-menu">

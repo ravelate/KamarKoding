@@ -42,8 +42,10 @@ Route::delete('redirects/listpembayaran',[AdminController::class,'destroypembaya
 // ::::::::::::::::::::::::::::::::::: Kontrol Kelas ::::::::::::::::::::::::::::::::::::: //
 //admin akses fitur List Kelas
 Route::get('redirects/listkelas',[AdminController::class,'listkelas']);
-Route::post('redirect/listkelas', [AdminController::class,'storekelas']);
+Route::post('redirects/listkelas', [AdminController::class,'storekelas']);
 Route::put('redirects/listkelas',[AdminController::class,'updatekelas']);
 Route::delete('redirects/listkelas',[AdminController::class,'destroykelas']);
-
+//admin akses fitur tambah kelas pengguna
+Route::get('redirects/tambahkelas',[AdminController::class,'tambahkelas']);
+Route::post('redirects/tambahkelas', [AdminController::class,'addkelas']);
 //------------------------------------user------------------------------------------------//
