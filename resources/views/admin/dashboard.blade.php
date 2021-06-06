@@ -166,41 +166,65 @@
             </div>
             <div class="custom-bar-chart">
               <ul class="y-axis">
-                <li><span>10.000</span></li>
-                <li><span>8.000</span></li>
-                <li><span>6.000</span></li>
-                <li><span>4.000</span></li>
-                <li><span>2.000</span></li>
+                <li><span>500</span></li>
+                <li><span>250</span></li>
+                <li><span>100</span></li>
+                <li><span>50</span></li>
+                <li><span>20</span></li>
                 <li><span>0</span></li>
               </ul>
+              @if ($tanggal < 8)
               <div class="bar">
                 <div class="title">JAN</div>
-                <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+                <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">{{$dataBulan['Januari']}}%</div>
               </div>
               <div class="bar ">
                 <div class="title">FEB</div>
-                <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
+                <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">{{$dataBulan['Februari']}}%</div>
               </div>
               <div class="bar ">
                 <div class="title">MAR</div>
-                <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
+                <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">{{$dataBulan['Maret']}}%</div>
               </div>
               <div class="bar ">
                 <div class="title">APR</div>
-                <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
+                <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">{{$dataBulan['April']}}%</div>
               </div>
               <div class="bar">
                 <div class="title">MAY</div>
-                <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
+                <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">{{$dataBulan['Mei']}}%</div>
               </div>
               <div class="bar ">
                 <div class="title">JUN</div>
-                <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
+                <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">{{$dataBulan['Juni']}}%</div>
               </div>
               <div class="bar">
                 <div class="title">JUL</div>
-                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">{{$dataBulan['Juli']}}%</div>
               </div>
+              @else
+              <div class="bar">
+                <div class="title">AUG</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">{{$dataBulan['Agustus']}}%</div>
+              </div>
+              <div class="bar">
+                <div class="title">SEP</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">{{$dataBulan['September']}}%</div>
+              </div>
+              <div class="bar">
+                <div class="title">OCT</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">{{$dataBulan['Oktober']}}%</div>
+              </div>
+              <div class="bar">
+                <div class="title">NOV</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">{{$dataBulan['November']}}%</div>
+              </div>
+              <div class="bar">
+                <div class="title">DES</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">{{$dataBulan['Desember']}}%</div>
+              </div>
+              @endif
+              
             </div>
             <!--custom chart end-->
             <div class="row mt">
@@ -222,14 +246,14 @@
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>150</h3>
+            <h3>{{$dataOrder->count()}}</h3>
 
-            <p>Viewers</p>
+            <p>Jumlah Order</p>
           </div>
           <div class="icon">
             <i class="ion ion-bag"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="/redirects/listorder" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -237,9 +261,9 @@
         <!-- small box -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>53<sup style="font-size: 20px">%</sup></h3>
+            <h3>{{$Income}}<sup style="font-size: 20px"></sup></h3>
 
-            <p>Bounce Rate</p>
+            <p>Income</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -252,14 +276,14 @@
         <!-- small box -->
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3>44</h3>
+            <h3>{{$dataUser->count()}}</h3>
 
-            <p>User Registrations</p>
+            <p>Jumlah Users</p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="/redirects/listpengguna" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -267,14 +291,14 @@
         <!-- small box -->
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3>65</h3>
+            <h3>{{$dataPembayaran->count()}}</h3>
 
-            <p>Unique Visitors</p>
+            <p>Pembayaran Mengunggu Konfirmasi</p>
           </div>
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="/redirects/listpembayaran" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -285,7 +309,7 @@
             <!-- DONUT CHART -->
             <div class="card card-danger" style="height: 400px;">
               <div class="card-header">
-                <h3 class="card-title">Donut Chart</h3>
+                <h3 class="card-title">Kelas Favorit</h3>
               </div>
               <div class="card-body">
                 <canvas id="donutChart" style="min-height: 300px; height: 300px; max-height: 300px;"></canvas>
@@ -313,16 +337,17 @@
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
     var donutData        = {
       labels: [
-          'Chrome',
-          'IE',
-          'FireFox',
-          'Safari',
-          'Opera',
-          'Navigator',
+        @foreach ($dataLangganan as $langgan)
+          '{{$langgan->nama_langganan}}',
+        @endforeach
       ],
       datasets: [
         {
-          data: [700,500,400,600,300,100],
+          data: [
+            @foreach ($dataLangganan as $donat)
+              {{$donat->users->count()}},
+            @endforeach
+          ],
           backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
         }
       ]
@@ -349,7 +374,7 @@
            <!-- CALENDAR-->
            <div id="calendar" class="mb">
               <div class="panel green-panel no-margin">
-                <div class="panel-body">
+                <div class="panel-body" style="height: 400px;">
                   <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
                     <div class="arrow"></div>
                     <h3 class="popover-title" style="disadding: none;"></h3>
@@ -444,6 +469,7 @@
       var to = $("#" + id).data("to");
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
+    
   </script>
   
 </body>
