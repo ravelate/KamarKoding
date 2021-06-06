@@ -128,6 +128,16 @@
             </li>
             <li class="sub-menu">
               <a href="javascript:;">
+                <i class="fa fa-tasks"></i>
+                <span>Kontrol Kelas</span>
+                </a>
+              <ul class="sub">
+                <li><a href="/redirects/listkelas">List Kelas</a></li>
+                <li><a href="/redirects/tambahkelas">Tambah Kelas Pengguna</a></li>
+              </ul>
+            </li>
+            <li class="sub-menu">
+              <a href="javascript:;">
                 <i class="fa fa-book"></i>
                 <span>Extra Pages</span>
                 </a>
@@ -135,16 +145,6 @@
                 <li><a href="blank.html">Blank Page</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li><a href="profile.html">Profile</a></li>
-              </ul>
-            </li>
-            <li class="sub-menu">
-              <a href="javascript:;">
-                <i class="fa fa-tasks"></i>
-                <span>Paket Kelas</span>
-                </a>
-              <ul class="sub">
-                <li><a href="advanced_form_components.html">Upload File Paket Kelas</a></li>
-                <li><a href="form_validation.html">Edit File Paket Kelas</a></li>
               </ul>
             </li>
           </ul>
@@ -268,7 +268,7 @@
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="/redirects/listorder" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->

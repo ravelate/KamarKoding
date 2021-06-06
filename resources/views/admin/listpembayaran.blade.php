@@ -92,7 +92,17 @@
             <ul class="sub">
               <li><a class="active" href="/redirects/listpengguna">List Pengguna</a></li>
               <li><a href="/redirects/listorder">List Order</a></li>
-              <li><a href="file_upload.html">List Pembayaran</a></li>
+              <li><a href="/redirects/listpembayaran">List Pembayaran</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-tasks"></i>
+              <span>Kontrol Kelas</span>
+              </a>
+            <ul class="sub">
+              <li><a href="/redirects/listkelas">List Kelas</a></li>
+              <li><a href="/redirects/tambahkelas">Tambah Kelas Pengguna</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -104,16 +114,6 @@
               <li><a href="blank.html">Blank Page</a></li>
               <li><a href="login.html">Login</a></li>
               <li><a href="profile.html">Profile</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-tasks"></i>
-              <span>Paket Kelas</span>
-              </a>
-            <ul class="sub">
-              <li><a href="advanced_form_components.html">Upload File Paket Kelas</a></li>
-              <li><a href="form_validation.html">Edit File Paket Kelas</a></li>
             </ul>
           </li>
         </ul>
