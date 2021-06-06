@@ -248,7 +248,7 @@
           <div class="inner">
             <h3>{{$dataOrder->count()}}</h3>
 
-            <p>Jumlah Order</p>
+            <p>Jumlah Order Bulan Ini</p>
           </div>
           <div class="icon">
             <i class="ion ion-bag"></i>
@@ -263,7 +263,7 @@
           <div class="inner">
             <h3>{{$Income}}<sup style="font-size: 20px"></sup></h3>
 
-            <p>Income</p>
+            <p>Ekspetasi Income</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>

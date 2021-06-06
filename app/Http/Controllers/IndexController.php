@@ -11,8 +11,10 @@ class IndexController extends Controller
     public function index(){
         $role=Auth::user()->role;
         if($role == '1'){
+            $date = now()->year;
+            $tanggal = now()->month;
             $dataLangganan= Langganan::with('users')->get();
-            $dataOrder= Order::get();
+            $dataOrder= Order::whereMonth('created_at', '=', $tanggal)->get();
             $dataUser= Auth::user()->get();
             $dataPembayaran= Pembayaran::get();
 
@@ -20,8 +22,6 @@ class IndexController extends Controller
             foreach($dataOrder as $inco){
                 $Income = $Income + (int)$inco->harga;
             }
-            $date = now()->year;
-            $tanggal = now()->month;
             $dataBulan = array(
                 "Januari" => Auth::user()->whereYear('created_at', '=', $date)->whereMonth('created_at', '=', '1')->count(),
                 "Februari" => Auth::user()->whereYear('created_at', '=', $date)->whereMonth('created_at', '=', '2')->count(),
