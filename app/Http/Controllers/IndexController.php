@@ -37,10 +37,12 @@ class IndexController extends Controller
                 "Desember" => Auth::user()->whereYear('created_at', '=', $date)->whereMonth('created_at', '=', '12')->count(),
               );
             return view('admin/dashboard')->with(compact('dataLangganan', 'dataOrder','dataUser','dataPembayaran',"Income","dataBulan","tanggal"));
+            }else{
             $dataLangganan= Langganan::with('users')->get();
             // dd($dataLangganan);
             return view('user/dashboard',compact(['dataLangganan']));
+            }
         }
-    }
+    
     }
         
