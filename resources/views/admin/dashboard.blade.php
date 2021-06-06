@@ -21,6 +21,36 @@
   <link href="adminassets/css/style.css" rel="stylesheet">
   <link href="adminassets/css/style-responsive.css" rel="stylesheet">
   <script src="adminassets/lib/chart-master/Chart.js"></script>
+  <!-- Nyolong CSS AdminLTE -->
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+        href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{ asset('adminlteassets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{{ asset('adminlteassets/plugins/jqvmap/jqvmap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('adminlteassets/css/adminlte.min.css') }}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('adminlteassets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('adminlteassets/plugins/daterangepicker/daterangepicker.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('adminlteassets/plugins/summernote/summernote-bs4.min.css') }}">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('adminlteassets/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('adminlteassets/css/adminlte.min.css') }}">
+    <!-- End: Nyolong CSS AdminLTE -->
 
 </head>
 
@@ -129,7 +159,7 @@
     <section id="main-content">
       <section class="wrapper">
         <div class="row">
-          <div class="col-lg-9 main-chart">
+          <div class="col-lg-12 main-chart">
             <!--CUSTOM CHART START -->
             <div class="border-head">
               <h3>USER VISITS</h3>
@@ -182,10 +212,142 @@
           <!-- **********************************************************************************************************************************************************
               RIGHT SIDEBAR CONTENT
               *********************************************************************************************************************************************************** -->
-          <div class="col-lg-3 ds">
+          <!-- <div class="col-lg-3 ds">
            
-            <!-- CALENDAR-->
-            <div id="calendar" class="mb">
+          </div> -->
+          <!-- /col-lg-3 -->
+          <!-- **********************************************NYOLONG CARD********************************************** -->
+          
+          <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>150</h3>
+
+            <p>Viewers</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+            <p>Bounce Rate</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>44</h3>
+
+            <p>User Registrations</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-person-add"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>65</h3>
+
+            <p>Unique Visitors</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-pie-graph"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+          <!-- **********************************************ED: NYOLONG CARD********************************************** -->
+          <div class="col-lg-6">
+           <div>
+           <!-- ******************************DONAT CHART******************************* -->
+            <!-- DONUT CHART -->
+            <div class="card card-danger" style="height: 400px;">
+              <div class="card-header">
+                <h3 class="card-title">Donut Chart</h3>
+              </div>
+              <div class="card-body">
+                <canvas id="donutChart" style="min-height: 300px; height: 300px; max-height: 300px;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          <!-- ******************************ED: DONAT CHART****************************** -->
+          <!-- //-------------
+    //- ***********************************************************************************DONUT CHART***********************************************************************************-
+    //------------- -->
+    <script src="adminlteassets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="adminlteassets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="adminlteassets/plugins/chart.js/Chart.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="adminlteassets/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="adminlteassets/js/demo.js"></script>
+
+    <!-- DONAT CHART -->
+  <script>
+    // Get context with jQuery - using jQuery's .get() method.
+    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+      labels: [
+          'Chrome',
+          'IE',
+          'FireFox',
+          'Safari',
+          'Opera',
+          'Navigator',
+      ],
+      datasets: [
+        {
+          data: [700,500,400,600,300,100],
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: donutData,
+      options: donutOptions
+    })
+  </script>
+  <!-- ED: DONAT CHART -->
+  <!-- //-------------
+    //- ***********************************************************************************ED: DONUT CHART***********************************************************************************-
+    //------------- -->
+           </div>
+        </div>
+        <div class="col-lg-6">
+           <!-- CALENDAR-->
+           <div id="calendar" class="mb">
               <div class="panel green-panel no-margin">
                 <div class="panel-body">
                   <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
@@ -199,8 +361,8 @@
             </div>
             <!-- / calendar -->
           </div>
-          <!-- /col-lg-3 -->
         </div>
+        
         <!-- /row -->
       </section>
     </section>
@@ -283,6 +445,7 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   </script>
+  
 </body>
 
 </html>

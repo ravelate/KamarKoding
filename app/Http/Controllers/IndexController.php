@@ -11,6 +11,7 @@ class IndexController extends Controller
     public function index(){
         $role=Auth::user()->role;
         if($role == '1'){
+            
             return view('admin/dashboard');
         }else {
             $dataLangganan= Langganan::with('users')->get();
