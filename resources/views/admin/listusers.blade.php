@@ -355,7 +355,6 @@
                                   @csrf
                                   <input type="hidden" name="id" value="{{$d->id}}">
                                       <div class="modal-body">
-                                      
                                           <div class="from-group">
                                               <label class="control-label" for="nm_brg"> Nama: </label>
                                               <input type="text" name="name" class="from-control" id="nm_brg" value="{{$d->name}}" required>

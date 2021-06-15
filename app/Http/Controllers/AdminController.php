@@ -27,6 +27,7 @@ class AdminController extends Controller
     {
         // dd($request);
         $pengguna = Auth::user()->find($request->id);
+        // dd($request);
         $pengguna->update($request->all());
         return redirect('redirects/listpengguna')->with('sukses', 'Data berhasil diupdate');
     }
