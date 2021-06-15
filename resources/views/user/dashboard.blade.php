@@ -161,15 +161,22 @@
                 <p class="fst-italic text-center">{{$langganan->harga}}</p>
                 <p class="card-text">{{$langganan->keterangan}}</p>
                 <div class="col text-center">
-                  @if ($langganan->users->count() > 0)
                   @foreach ($langganan->users as $p)
-                    @if ($langganan->id == $p->pivot->langganan_id)
-                    <button type="button" class="btn btn-success btn-lg">buka</button>
+                    @if ($iduser == $p->pivot->user_id && $langganan->id == $p->pivot->langganan_id)
+                    <a class="btn btn-success btn-lg">buka</a>
+                    @else
+                              <div id="beli{{$langganan->nama_langganan}}">
+                                <form action="" method="POST" enctype="multipart/from-data">
+                                @csrf
+                                            <input type="hidden" name="user_id" value="{{$iduser}}">
+                                            <input type="hidden" name="nama_order" value="{{$langganan->nama_langganan}}">
+                                            <input type="hidden" name="harga" value="{{$langganan->harga}}">
+                                            <input type="submit" class="btn btn-success" value="Beli">
+                                </form>
+                              </div>
+                                   
                     @endif
                   @endforeach
-                  @else
-                  <button type="button" class="btn btn-success btn-lg">Beli</button>
-                  @endif
                 </div>
               </div>
             </div>

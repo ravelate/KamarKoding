@@ -331,7 +331,7 @@
                           <td><a>{{$d->nama_rekening}}</a></td>
                           <td>{{$d->nomor_rekening}}</td> 
                           <td>{{$d->jenis_bank}}</td>
-                          <td><img src="{{ URL::to('/images/bukti_pembayaran/' . $d->bukti_pembayaran) }}" alt="{{$d->nama_rekening}}" width="100" 
+                          <td><img src="{{ URL::to($d->bukti_pembayaran) }}" alt="{{$d->nama_rekening}}" width="100" 
                             height="80"></td>                
                          
                           {{-- <td><span class="status text-success">&bull;</span> Active</td> --}}

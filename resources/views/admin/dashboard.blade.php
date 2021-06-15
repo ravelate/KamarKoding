@@ -162,7 +162,7 @@
           <div class="col-lg-12 main-chart">
             <!--CUSTOM CHART START -->
             <div class="border-head">
-              <h3>USER VISITS</h3>
+              <h3>Jumlah Pengguna yang Daftar Perbulan</h3>
             </div>
             <div class="custom-bar-chart">
               <ul class="y-axis">

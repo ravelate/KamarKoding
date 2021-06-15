@@ -71,56 +71,56 @@
     <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
-    <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="{{ route('profile.show') }}"><img src="{{ asset('adminassets/img/ui-sam.jpg')}}" class="img-circle" width="80"></a></p>
-          <h5 class="centered"> {{ Auth::user()->name }}</h5>
-          <li class="mt">
-            <a href="/redirects">
-              <i class="fa fa-dashboard"></i>
-              <span>Dashboard</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-cogs"></i>
-              <span>Data Pengguna</span>
-              </a>
-            <ul class="sub">
-              <li><a class="active" href="/redirects/listpengguna">List Pengguna</a></li>
-              <li><a href="/redirects/listorder">List Order</a></li>
-              <li><a href="/redirects/listpembayaran">List Pembayaran</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-tasks"></i>
-              <span>Kontrol Kelas</span>
-              </a>
-            <ul class="sub">
-              <li><a href="/redirects/listkelas">List Kelas</a></li>
-              <li><a href="/redirects/tambahkelas">Tambah Kelas Pengguna</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Extra Pages</span>
-              </a>
-            <ul class="sub">
-              <li><a href="blank.html">Blank Page</a></li>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="profile.html">Profile</a></li>
-            </ul>
-          </li>
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
-    <!--sidebar end-->
+       <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+                <p class="centered"><a href="{{ route('profile.show') }}"><img src="{{ asset('adminassets/img/ui-sam.jpg')}}" class="img-circle" width="80"></a></p>
+                <h5 class="centered"> {{ Auth::user()->name }}</h5>
+                <li class="mt">
+                  <a href="/redirects">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                  <a href="javascript:;">
+                    <i class="fa fa-cogs"></i>
+                    <span>Data Pengguna</span>
+                    </a>
+                  <ul class="sub">
+                    <li><a class="active" href="/redirects/listpengguna">List Pengguna</a></li>
+                    <li><a href="/redirects/listorder">List Order</a></li>
+                    <li><a href="/redirects/listpembayaran">List Pembayaran</a></li>
+                  </ul>
+                </li>
+                <li class="sub-menu">
+                  <a href="javascript:;">
+                    <i class="fa fa-tasks"></i>
+                    <span>Kontrol Kelas</span>
+                    </a>
+                  <ul class="sub">
+                    <li><a href="/redirects/listkelas">List Kelas</a></li>
+                    <li><a href="/redirects/tambahkelas">Tambah Kelas Pengguna</a></li>
+                  </ul>
+                </li>
+                <li class="sub-menu">
+                  <a href="javascript:;">
+                    <i class="fa fa-book"></i>
+                    <span>Extra Pages</span>
+                    </a>
+                  <ul class="sub">
+                    <li><a href="blank.html">Blank Page</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <!-- sidebar menu end-->
+            </div>
+          </aside>
+          <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
@@ -309,79 +309,73 @@
                   <div class="table-title">
                       <div class="row">
                           <div class="col-sm-5">
-                              <h2>User <b>Management</b></h2>
+                              <h2><b>Keranjangku</b></h2>
                           </div>
-                          
+    
                       </div>
                   </div>
                   <table class="table table-striped table-hover">
                       <thead>
                           <tr>
-                              <th>#</th>
-                              <th>Nama</th>						
-                              <th>tanggal dibuat</th>
-                              <th>Email</th>
+                              <th>ID Order</th>
+                             			
+                              <th>Order</th>
+                              <th>Harga</th>
                               <th>Status</th>
+                              <th>Dibuat Pada </th>
                               <th>Action</th>
                           </tr>
                       </thead>
                       <tbody>
-                         @foreach ($data as $d)
+                         @foreach ($order as $d)
                          <tr>
                           <td>{{$d->id}}</td>
-                          <td><a>{{$d->name}}</a></td>
-                          <td>{{$d->created_at}}</td> 
-                          <td>{{$d->email}}</td>
-                          @if ($d->role == 1)
-                          <td>Admin</td>
-                          @else
-                          <td>Pelajar</td>
-                          @endif                       
-                         
-                          {{-- <td><span class="status text-success">&bull;</span> Active</td> --}}
+                          <td><a>{{$d->nama_order}}</a></td>
+                          <td>{{$d->harga}}</td>
+                          <td>{{$d->status}}</td>
+                          <td>{{$d->created_at}}</td>
                           <td>
-                            
-                             <!-- ini tombol edit -->
-                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$d->id}}" data-formid="{{$d->id}}">Edit</button>
-                      <div id="edit{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                      
-                                  </div>
-                                  <form action="" method="POST" enctype="multipart/from-data">
-                                  @method('PUT')
-                                  @csrf
-                                  <input type="hidden" name="id" value="{{$d->id}}">
-                                      <div class="modal-body">
-                                          <div class="from-group">
-                                              <label class="control-label" for="nm_brg"> Nama: </label>
-                                              <input type="text" name="name" class="from-control" id="nm_brg" value="{{$d->name}}" required>
-                                          </div>
-                                          <div class="from-group">
-                                              <label class="control-label" for="hrg_brg"> Email: </label>
-                                              <input type="text" name="email" class="from-control" id="hrg_brg" value="{{$d->email}}"required>
-                                      </div>
-                                      <div class="from-group">
-                                        <label class="control-label" for="role">Integritas: </label>
-                                         <select class="from-control" name="role">
-                                            <option value="1">Admin</option>
-                                            <option value="0">Pelajar</option>  
-                                         </select>
-                                      </div>
-                                      
-                                      <div class="modal-footer">
-                                          <button type="reset" class="btn btn-danger">Reset</button>
-                                          <input type="submit" class="btn btn-success" value="Save">
-                                      </div>
-                                      </div>
-                                      </form>
-                                      </div>
-                                      </div>
-                                      </div>
-                                      {{-- end tombol edit --}}
-                                      
-                              <!-- ini tombol hapus -->
+                               {{-- Ini Tombol Tambah --}}
+                          <a class="btn btn-primary" data-toggle="modal" data-target="#tambah{{$d->id}}"><i class="material-icons">&#xe8cc;</i> <span style="color: white">Checkout</span></a>
+                          <div id="tambah{{$d->id}}" class="modal fade" role="dialog">
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                   
+                               </div>
+                               <form action="" method="POST" enctype="multipart/from-data">  
+                                               
+                               @csrf
+                                   <div class="modal-body">
+                                       <input type="hidden" name="order_id" value="{{$d->id}}">
+                                       <div class="from-group">
+                                           <label class="control-label" for="nm_brg" style="color: black"> Nama Rekening: </label>
+                                           <input type="text" name="nama_rekening" class="from-control" id="nm_brg" style="color: black" required>
+                                       </div>
+                                       <div class="from-group">
+                                           <label class="control-label" for="hrg_brg" style="color: black"> Nomor Rekening: </label>
+                                           <input type="text" name="nomor_rekening" class="from-control" id="hrg_brg" style="color: black" required>
+                                   </div>
+                                   <div class="from-group">
+                                     <label class="control-label" for="hrg_brg" style="color: black"> Jenis Bank: </label>
+                                     <input type="text" name="jenis_bank" class="from-control" id="hrg_brg" style="color: black" required>
+                                         </div>
+                                                 <div class="from-group">
+                                           <label class="control-label" for="hrg_brg" style="color: black"> Bukti Pembayaran: </label>
+                                           <input type="text" name="bukti_pembayaran" class="from-control" id="hrg_brg" style="color: black" required>
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="reset" class="btn btn-danger">Reset</button>
+                                       <input type="submit" class="btn btn-success" value="Save">
+                                   </div>
+                                   </div>
+                                   </form>
+                                   </div>
+                                   </div>
+                                   </div>
+                                   {{-- end tombol tambah --}}	
+                               <!-- ini tombol hapus -->
                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{$d->id}}" data-formid="{{$d->id}}">Hapus</button>
                       <div id="hapus{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
                           <div class="modal-dialog">
@@ -401,7 +395,6 @@
                                       </div>
                                       {{-- end tombol hapus --}}
                           </td>
-                      </tr>
                          @endforeach
                          
                       </tbody>

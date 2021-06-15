@@ -49,3 +49,10 @@ Route::delete('redirects/listkelas',[AdminController::class,'destroykelas']);
 Route::get('redirects/tambahkelas',[AdminController::class,'tambahkelas']);
 Route::post('redirects/tambahkelas', [AdminController::class,'addkelas']);
 //------------------------------------user------------------------------------------------//
+// ::::::::::::::::::::::::::::::::::: Pembelian Pengguna ::::::::::::::::::::::::::::::::::::: //
+// beli didashboard
+Route::post('redirects',[UserController::class,'orderstore']);
+// keranjang pembelian user
+Route::get('redirects/keranjang',[UserController::class,'keranjang']);
+Route::post('redirects/keranjang',[UserController::class,'storekeranjang']);
+Route::delete('redirects/keranjang',[UserController::class,'destroykeranjang']);

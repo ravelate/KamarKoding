@@ -39,8 +39,9 @@ class IndexController extends Controller
             return view('admin/dashboard')->with(compact('dataLangganan', 'dataOrder','dataUser','dataPembayaran',"Income","dataBulan","tanggal"));
             }else{
             $dataLangganan= Langganan::with('users')->get();
+            $iduser=Auth::user()->id;
             // dd($dataLangganan);
-            return view('user/dashboard',compact(['dataLangganan']));
+            return view('user/dashboard')->with(compact('dataLangganan', 'iduser'));
             }
         }
     
