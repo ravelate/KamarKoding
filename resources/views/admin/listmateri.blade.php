@@ -20,7 +20,7 @@
   <!-- Custom styles for this template -->
   <link href="{{ asset('adminassets/css/style.css')}}" rel="stylesheet">
   <link href="{{ asset('adminassets/css/style-responsive.css')}}" rel="stylesheet">
-
+  
 </head>
 
 <body>
@@ -308,36 +308,126 @@
                   <div class="table-title">
                       <div class="row">
                           <div class="col-sm-5">
-                              <h2>Pembayaran <b>Management</b></h2>
+                              <h2>Materi <b>    Management</b></h2>
                           </div>
-                          
+                          <div class="col-sm-7">
+                              {{-- Ini Tombol Tambah --}}
+                            <a class="btn btn-secondary" data-toggle="modal" data-target="#tambah"><i class="material-icons">&#xE147;</i> <span>Tambah Materi Baru</span></a>
+                             <div id="tambah" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      
+                                  </div>
+                                  <form action="" method="POST" enctype="multipart/from-data">  
+                                                  
+                                  @csrf
+                                      <div class="modal-body">
+                                        <div class="from-group">
+                                            <label class="control-label" for="langganan_id" style="color: black">Nama Langganan: </label>
+                                             <select class="from-control" name="langganan_id" style="color: black">
+                                                @foreach ($dataLangganan as $l)
+                                                <option value="{{$l->id}}" style="color: black">{{$l->nama_langganan}}</option>
+                                                @endforeach
+                                             </select>
+                                          </div>
+                                        <div class="from-group">
+                                            <label class="control-label" for="nm_brg" style="color: black"> Nama Materi: </label>
+                                            <input type="text" name="nama_materi" class="from-control" id="nm_brg" style="color: black" required>
+                                        </div>
+                                        <div class="from-group">
+                                            <label class="control-label" for="dibuat_oleh" style="color: black">Dibuat Oleh: </label>
+                                             <select class="from-control" name="dibuat_oleh" style="color: black">
+                                                @foreach ($dataUser as $u)
+                                                <option value="{{$u->name}}" style="color: black">{{$u->name}}</option>
+                                                @endforeach
+                                             </select>
+                                          </div>
+                                      <div class="modal-footer">
+                                          <button type="reset" class="btn btn-danger">Reset</button>
+                                          <input type="submit" class="btn btn-success" value="Save">
+                                      </div>
+                                      </div>
+                                      </form>
+                                      </div>
+                                      </div>
+                                      </div>
+                                      {{-- end tombol tambah --}}	
+                        </div>
                       </div>
                   </div>
                   <table class="table table-striped table-hover">
                       <thead>
                           <tr>
-                              <th>ID Order</th>
-                              <th>Nama Rekening</th>
-                              <th>Nomor Rekening</th>
-                              <th>Jenis Bank</th>						
-                              <th>Bukti Pembayaran</th>
+                              <th>ID Materi</th>
+                              <th>Nama Langganan</th>
+                              <th>Nama Materi</th>						
+                              <th>Dibuat Oleh</th>
+                              <th>Dibuat Pada</th>
+                              <th>Actions</th>
                           </tr>
                       </thead>
                       <tbody>
-                         @foreach ($data as $d)
+                         @foreach ($dataMateri as $d)
                          <tr>
-                          <td>{{$d->order_id}}</td>
-                          <td><a>{{$d->nama_rekening}}</a></td>
-                          <td>{{$d->nomor_rekening}}</td> 
-                          <td>{{$d->jenis_bank}}</td>
-                          <td><img src="{{ URL::to($d->bukti_pembayaran) }}" alt="{{$d->nama_rekening}}" width="100" 
-                            height="80"></td>                
-                         
-                          {{-- <td><span class="status text-success">&bull;</span> Active</td> --}}
-                          <td>
-                            
+                          <td>{{$d->id}}</td>
+                          @foreach ($dataLangganan as $p)
+                              @if ($p->id == $d->langganan_id)
+                              <td><a>{{$p->nama_langganan}}</a></td>
+                              @endif
+                          @endforeach
+                          <td><a>{{$d->nama_materi}}</a></td>
+                          <td><a>{{$d->dibuat_oleh}}</a></td>
+                          <td>{{$d->created_at}}</td> 
+                            <td>
+                             <!-- ini tombol edit -->
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$d->id}}" data-formid="{{$d->id}}">Edit</button>
+                      <div id="edit{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      
+                                  </div>
+                                  <form action="" method="post" enctype="multipart/from-data">
+                                  @method('PUT')
+                                  @csrf
+                                  <input type="hidden" name="id" value="{{$d->id}}">
+                                  <div class="modal-body">
+                                    <div class="from-group">
+                                        <label class="control-label" for="langganan_id" style="color: black">Nama Langganan: </label>
+                                         <select class="from-control" name="langganan_id" style="color: black">
+                                            @foreach ($dataLangganan as $l)
+                                            <option value="{{$l->id}}" style="color: black">{{$l->nama_langganan}}</option>
+                                            @endforeach
+                                         </select>
+                                      </div>
+                                    <div class="from-group">
+                                        <label class="control-label" for="nm_brg" style="color: black"> Nama Materi: </label>
+                                        <input type="text" name="nama_langganan" class="from-control" id="nm_brg" style="color: black" value="{{$d->nama_materi}}" required>
+                                    </div>
+                                    <div class="from-group">
+                                        <label class="control-label" for="dibuat_oleh">Dibuat Oleh: </label>
+                                         <select class="from-control" name="dibuat_oleh">
+                                            @foreach ($dataUser as $u)
+                                            <option value="{{$u->name}}">{{$u->name}}</option>
+                                            @endforeach
+                                         </select>
+                                      </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                    <input type="submit" class="btn btn-success" value="Save">
+                                </div>
+                                      </div>
+                                      </form>
+                                      </div>
+                                      </div>
+                                      </div>
+                                      {{-- end tombol edit --}}
+                                      
                               <!-- ini tombol hapus -->
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{$d->id}}" data-formid="{{$d->id}}">Hapus</button>
+                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{$d->id}}" data-formid="{{$d->id}}">Hapus</button>
                       <div id="hapus{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
                           <div class="modal-dialog">
                               <div class="modal-content">

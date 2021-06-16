@@ -336,7 +336,7 @@
                           <td>{{$d->created_at}}</td>
                           <td>
                                {{-- Ini Tombol Tambah --}}
-                          <a class="btn btn-primary" data-toggle="modal" data-target="#tambah{{$d->id}}"><i class="material-icons">&#xe8cc;</i> <span style="color: white">Checkout</span></a>
+                          <a class="btn btn-primary" data-toggle="modal" data-target="#tambah{{$d->id}}"><i class="material-icons" style="color: white">&#xe8cc;</i> <span style="color: white">Checkout</span></a>
                           <div id="tambah{{$d->id}}" class="modal fade" role="dialog">
                        <div class="modal-dialog">
                            <div class="modal-content">
@@ -376,7 +376,7 @@
                                    </div>
                                    {{-- end tombol tambah --}}	
                                <!-- ini tombol hapus -->
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus{{$d->id}}" data-formid="{{$d->id}}">Hapus</button>
+                               <a class="btn btn-danger" data-toggle="modal" data-target="#hapus{{$d->id}}"><i class="material-icons" style="color: white">&#xe872;</i> <span style="color: white">Hapus</span></a>
                       <div id="hapus{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">
                           <div class="modal-dialog">
                               <div class="modal-content">

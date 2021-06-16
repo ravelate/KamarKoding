@@ -108,12 +108,11 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Extra Pages</span>
+              <span>Materi & Modul</span>
               </a>
             <ul class="sub">
-              <li><a href="blank.html">Blank Page</a></li>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="profile.html">Profile</a></li>
+              <li><a href="/redirects/listmateri">List Materi</a></li>
+              <li><a href="/redirects/listmodul">List Modul</a></li>
             </ul>
           </li>
         </ul>

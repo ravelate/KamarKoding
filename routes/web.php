@@ -48,6 +48,16 @@ Route::delete('redirects/listkelas',[AdminController::class,'destroykelas']);
 //admin akses fitur tambah kelas pengguna
 Route::get('redirects/tambahkelas',[AdminController::class,'tambahkelas']);
 Route::post('redirects/tambahkelas', [AdminController::class,'addkelas']);
+//admin akses fitur list materi
+Route::get('redirects/listmateri',[AdminController::class,'listmateri']);
+Route::post('redirects/listmateri', [AdminController::class,'storemateri']);
+Route::put('redirects/listmateri',[AdminController::class,'updatemateri']);
+Route::delete('redirects/listmateri',[AdminController::class,'destroymateri']);
+//admin akses fitur list modul
+Route::get('redirects/listmodul',[AdminController::class,'listmodul']);
+Route::post('redirects/listmodul', [AdminController::class,'storemodul']);
+Route::put('redirects/listmodul',[AdminController::class,'updatemodul']);
+Route::delete('redirects/modul',[AdminController::class,'destroymodul']);
 //------------------------------------user------------------------------------------------//
 // ::::::::::::::::::::::::::::::::::: Pembelian Pengguna ::::::::::::::::::::::::::::::::::::: //
 // beli didashboard

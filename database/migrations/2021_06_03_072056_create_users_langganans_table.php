@@ -18,7 +18,6 @@ class CreateUsersLangganansTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('langganan_id')->unsigned();
             $table->foreign('langganan_id')->references('id')->on('langganans')->onDelete('cascade');
-            $table->string('status');
         });
     }
 

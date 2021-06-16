@@ -108,12 +108,11 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Extra Pages</span>
+              <span>Materi & Modul</span>
               </a>
             <ul class="sub">
-              <li><a href="blank.html">Blank Page</a></li>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="profile.html">Profile</a></li>
+              <li><a href="/redirects/listmateri">List Materi</a></li>
+              <li><a href="/redirects/listmodul">List Modul</a></li>
             </ul>
           </li>
         </ul>
@@ -309,11 +308,11 @@
                   <div class="table-title">
                       <div class="row">
                           <div class="col-sm-5">
-                              <h2>Kelas <b>Management</b></h2>
+                              <h2>Modul <b>    Management</b></h2>
                           </div>
                           <div class="col-sm-7">
                               {{-- Ini Tombol Tambah --}}
-                            <a class="btn btn-secondary" data-toggle="modal" data-target="#tambah"><i class="material-icons">&#xE147;</i> <span>Tambah Kelas Baru</span></a>
+                            <a class="btn btn-secondary" data-toggle="modal" data-target="#tambah"><i class="material-icons">&#xE147;</i> <span>Tambah Modul Baru</span></a>
                              <div id="tambah" class="modal fade" role="dialog">
                           <div class="modal-dialog">
                               <div class="modal-content">
@@ -325,23 +324,22 @@
                                                   
                                   @csrf
                                       <div class="modal-body">
-                                      
-                                          <div class="from-group">
-                                              <label class="control-label" for="nm_brg" style="color: black"> Nama Kelas: </label>
-                                              <input type="text" name="nama_langganan" class="from-control" id="nm_brg" style="color: black" required>
+                                        <div class="from-group">
+                                            <label class="control-label" for="materi_id" style="color: black">Nama Materi: </label>
+                                             <select class="from-control" name="materi_id" style="color: black">
+                                                @foreach ($dataMateri as $l)
+                                                <option value="{{$l->id}}" style="color: black">{{$l->nama_materi}}</option>
+                                                @endforeach
+                                             </select>
                                           </div>
-                                          <div class="from-group">
-                                              <label class="control-label" for="hrg_brg" style="color: black"> keterangan: </label>
-                                              <input type="text" name="keterangan" class="from-control" id="hrg_brg" style="color: black" required>
-                                      </div>
-                                      <div class="from-group">
-                                        <label class="control-label" for="hrg_brg" style="color: black"> harga: </label>
-                                        <input type="text" name="harga" class="from-control" id="hrg_brg" style="color: black" required>
-                                            </div>
-                                                    <div class="from-group">
-                                              <label class="control-label" for="hrg_brg" style="color: black"> link Gambar: </label>
-                                              <input type="text" name="gambar" class="from-control" id="hrg_brg" style="color: black" required>
-                                      </div>
+                                        <div class="from-group">
+                                            <label class="control-label" for="nm_brg" style="color: black"> Nama modul: </label>
+                                            <input type="text" name="nama_modul" class="from-control" id="nm_brg" style="color: black" required>
+                                        </div>
+                                        <div class="from-group">
+                                            <label class="control-label" for="nm_brg" style="color: black"> link modul: </label>
+                                            <input type="text" name="link_modul" class="from-control" id="nm_brg" style="color: black" required>
+                                        </div>
                                       <div class="modal-footer">
                                           <button type="reset" class="btn btn-danger">Reset</button>
                                           <input type="submit" class="btn btn-success" value="Save">
@@ -358,25 +356,26 @@
                   <table class="table table-striped table-hover">
                       <thead>
                           <tr>
-                              <th>#</th>
-                              <th>Nama Kelas</th>						
-                              <th>Keterangan</th>
-                              <th>Harga</th>
-                              <th>Jumlah Pelajar</th>
-                              <th>Dibuat pada</th>
+                              <th>ID Modul</th>
+                              <th>Nama Materi</th>
+                              <th>Nama Modul</th>						
+                              <th>Link Modul</th>
+                              <th>Dibuat Pada</th>
                               <th>Actions</th>
                           </tr>
                       </thead>
                       <tbody>
-                         @foreach ($dataLangganan as $d)
+                         @foreach ($dataModul as $d)
                          <tr>
                           <td>{{$d->id}}</td>
-                          <td><a>{{$d->nama_langganan}}</a></td>
-                          <td>{{$d->keterangan}}</td> 
-                          <td>{{$d->harga}}</td>
-                          <td>{{$d->users->count()}}</td>
-                          <td>{{$d->created_at}}</td>
-                          
+                          @foreach ($dataMateri as $p)
+                              @if ($p->id == $d->materi_id)
+                              <td><a>{{$p->nama_materi}}</a></td>
+                              @endif
+                          @endforeach
+                          <td><a>{{$d->nama_modul}}</a></td>
+                          <td><a>{{$d->link_modul}}</a></td>
+                          <td>{{$d->created_at}}</td> 
                             <td>
                              <!-- ini tombol edit -->
                       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$d->id}}" data-formid="{{$d->id}}">Edit</button>
@@ -392,23 +391,22 @@
                                   @csrf
                                   <input type="hidden" name="id" value="{{$d->id}}">
                                   <div class="modal-body">
-                                      
                                     <div class="from-group">
-                                        <label class="control-label" for="nm_brg" style="color: black"> Nama Kelas: </label>
-                                        <input type="text" name="nama_langganan" class="from-control" id="nm_brg" style="color: black" value="{{$d->nama_langganan}}" required>
+                                        <label class="control-label" for="materi_id" style="color: black">Nama Materi: </label>
+                                         <select class="from-control" name="materi_id" style="color: black">
+                                            @foreach ($dataMateri as $l)
+                                            <option value="{{$l->id}}" style="color: black">{{$l->nama_materi}}</option>
+                                            @endforeach
+                                         </select>
+                                      </div>
+                                    <div class="from-group">
+                                        <label class="control-label" for="nm_brg" style="color: black"> Nama modul: </label>
+                                        <input type="text" name="nama_modul" class="from-control" id="nm_brg" style="color: black" value="{{$d->nama_modul}}" required>
                                     </div>
                                     <div class="from-group">
-                                        <label class="control-label" for="hrg_brg" style="color: black"> keterangan: </label>
-                                        <input type="text" name="keterangan" class="from-control" id="hrg_brg" style="color: black" value="{{$d->keterangan}}" required>
-                                </div>
-                                <div class="from-group">
-                                  <label class="control-label" for="hrg_brg" style="color: black"> harga: </label>
-                                  <input type="text" name="harga" class="from-control" id="hrg_brg" style="color: black" value="{{$d->harga}}" required>
-                                      </div>
-                                              <div class="from-group">
-                                        <label class="control-label" for="hrg_brg" style="color: black"> link Gambar: </label>
-                                        <input type="text" name="gambar" class="from-control" id="hrg_brg" style="color: black" value="{{$d->gambar}}" required>
-                                </div>
+                                        <label class="control-label" for="nm_brg" style="color: black"> link modul: </label>
+                                        <input type="text" name="link_modul" class="from-control" id="nm_brg" style="color: black" value="{{$d->link_modul}}" required>
+                                    </div>
                                 <div class="modal-footer">
                                     <button type="reset" class="btn btn-danger">Reset</button>
                                     <input type="submit" class="btn btn-success" value="Save">

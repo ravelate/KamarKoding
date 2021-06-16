@@ -5,6 +5,8 @@ use App\Models\Order;
 use App\Models\Pembayaran;
 use App\Models\Langganan;
 use App\Models\User;
+use App\Models\Materi;
+use App\Models\Modul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -111,7 +113,7 @@ class AdminController extends Controller
         $role=Auth::user()->role;
         if($role == '1'){
             $dataLangganan= Langganan::with('users')->get();
-        return view('admin/kelas',compact(['dataLangganan']));
+        return view('admin/listkelas',compact(['dataLangganan']));
         }else {
             return redirect('/redirects');
         }
@@ -134,7 +136,7 @@ class AdminController extends Controller
     {
         $pengguna = Langganan::findOrFail($request->id);
         $pengguna->delete();
-        return redirect('redirects/listpengguna')->with('sukses', 'Data berhasil dihapus');
+        return redirect('redirects/listkelas')->with('sukses', 'Data berhasil dihapus');
     }
     // end list kelas doang
     // ini buat tambah kelas pengguna
@@ -154,5 +156,71 @@ class AdminController extends Controller
             Langganan::findOrfail($request->id)->users()->attach($request->get('user_id'));
         }
         return redirect('redirects/tambahkelas')->with('sukses', 'Data berhasil diinput');
+    }
+
+    // <--------------------------------------------list materi & modul kontrol ----------------------------------------------------> //
+     // ini buat list materi doang
+     public function listMateri() {
+        $role=Auth::user()->role;
+        if($role == '1'){
+            $dataMateri= Materi::get();
+            $dataLangganan = Langganan::get();
+            $dataUser = User::get()->where('role','1');
+        return view('admin/listmateri')->with(compact('dataMateri','dataLangganan','dataUser'));
+        }else {
+            return redirect('/redirects');
+        }
+    }
+    public function storeMateri(Request $request)
+    {
+        // dd($request);
+        Materi::create($request->all());
+        return redirect('redirects/listmateri')->with('sukses', 'Data berhasil diinput');
+    }
+
+    public function updateMateri(Request $request)
+    {
+        // dd($request);
+        $materi = Materi::findOrFail($request->id);
+        $materi->update($request->all());
+        return redirect('redirects/listmateri')->with('sukses', 'Data berhasil diupdate');
+    }
+    public function destroyMateri(Request $request)
+    {
+        $materi = Materi::findOrFail($request->id);
+        $materi->delete();
+        return redirect('redirects/listmateri')->with('sukses', 'Data berhasil dihapus');
+    }
+
+    // ini buat list modul doang
+    public function listModul() {
+        $role=Auth::user()->role;
+        if($role == '1'){
+            $dataMateri= Materi::get();
+            $dataModul = Modul::get();
+        return view('admin/listmodul')->with(compact('dataMateri','dataModul'));
+        }else {
+            return redirect('/redirects');
+        }
+    }
+    public function storeModul(Request $request)
+    {
+        // dd($request);
+        Modul::create($request->all());
+        return redirect('redirects/listmodul')->with('sukses', 'Data berhasil diinput');
+    }
+
+    public function updateModul(Request $request)
+    {
+        // dd($request);
+        $modul = Modul::findOrFail($request->id);
+        $modul->update($request->all());
+        return redirect('redirects/listmodul')->with('sukses', 'Data berhasil diupdate');
+    }
+    public function destroyModul(Request $request)
+    {
+        $modul = Modul::findOrFail($request->id);
+        $modul->delete();
+        return redirect('redirects/listmodul')->with('sukses', 'Data berhasil dihapus');
     }
 }

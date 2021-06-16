@@ -13,4 +13,8 @@ class Langganan extends Model
     {
         return $this->belongsToMany(User::class,"users_langganans");
     }
+    public function materi()
+    {
+        return $this->hasMany(Materi::class);
+    }
 }

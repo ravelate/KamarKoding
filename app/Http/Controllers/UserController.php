@@ -36,7 +36,6 @@ class UserController extends Controller
         public function storekeranjang(Request $request)
     {
         $input = $request->all();
-        // $image = $request->bukti_pembayaran;  
         // if ($image = $request->file('bukti_pembayaran')) {
         //     $destinationPath = 'images/bukti_pembayaran';
         //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
