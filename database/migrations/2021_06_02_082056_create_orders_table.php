@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id') ->references('id') ->on('users') ->onDelete('cascade') ->onUpdate('cascade');
             $table->string('nama_order');
             $table->string('harga');
-            $table->string('status');
+            $table->string('status')->default('Belum Bayar');
             $table->timestamps();
         });
     }

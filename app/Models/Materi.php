@@ -9,4 +9,9 @@ class Materi extends Model
 {
     use HasFactory;
     protected $guarded =["id"];
+
+    public function moduls()
+    {
+        return $this->hasMany(Modul::class);
+    }
 }

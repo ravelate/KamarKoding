@@ -66,3 +66,5 @@ Route::post('redirects',[UserController::class,'orderstore']);
 Route::get('redirects/keranjang',[UserController::class,'keranjang']);
 Route::post('redirects/keranjang',[UserController::class,'storekeranjang']);
 Route::delete('redirects/keranjang',[UserController::class,'destroykeranjang']);
+//materi users
+Route::get('redirects/{id}/kelas',[UserController::class,'kelas']);

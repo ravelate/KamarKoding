@@ -5,6 +5,8 @@ use App\Models\Order;
 use App\Models\Pembayaran;
 use App\Models\Langganan;
 use App\Models\User;
+use App\Models\Materi;
+use App\Models\Modul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,5 +52,16 @@ class UserController extends Controller
         $order = Order::findOrFail($request->id);
         $order->delete();
         return redirect('redirects/keranjang')->with('sukses', 'Data berhasil dihapus');
+    }
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::untuk materi::::::::::::::::::::::::::::::::::::::: //
+     // ini buat kelas pengguna
+     public function Kelas($id) {
+        $role=Auth::user()->role;
+        if($role == '0'){
+            $dataMateri= Materi::with('moduls')->get()->where('langganan_id',$id);
+        return view('user/materi')->with(compact('dataMateri'));
+        }else {
+            return redirect('/redirects');
+        }
     }
 }
