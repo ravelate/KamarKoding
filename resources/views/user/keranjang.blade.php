@@ -84,37 +84,12 @@
                     <span>Dashboard</span>
                     </a>
                 </li>
+                
                 <li class="sub-menu">
-                  <a href="javascript:;">
-                    <i class="fa fa-cogs"></i>
-                    <span>Data Pengguna</span>
-                    </a>
-                  <ul class="sub">
-                    <li><a class="active" href="/redirects/listpengguna">List Pengguna</a></li>
-                    <li><a href="/redirects/listorder">List Order</a></li>
-                    <li><a href="/redirects/listpembayaran">List Pembayaran</a></li>
-                  </ul>
-                </li>
-                <li class="sub-menu">
-                  <a href="javascript:;">
+                  <a href="/redirects/keranjang">
                     <i class="fa fa-tasks"></i>
-                    <span>Kontrol Kelas</span>
+                    <span>Keranjangku</span>
                     </a>
-                  <ul class="sub">
-                    <li><a href="/redirects/listkelas">List Kelas</a></li>
-                    <li><a href="/redirects/tambahkelas">Tambah Kelas Pengguna</a></li>
-                  </ul>
-                </li>
-                <li class="sub-menu">
-                  <a href="javascript:;">
-                    <i class="fa fa-book"></i>
-                    <span>Extra Pages</span>
-                    </a>
-                  <ul class="sub">
-                    <li><a href="blank.html">Blank Page</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                  </ul>
                 </li>
               </ul>
               <!-- sidebar menu end-->

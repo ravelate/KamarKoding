@@ -103,37 +103,12 @@
                     <span>Dashboard</span>
                     </a>
                 </li>
+                
                 <li class="sub-menu">
-                  <a href="javascript:;">
-                    <i class="fa fa-cogs"></i>
-                    <span>Data Pengguna</span>
-                    </a>
-                  <ul class="sub">
-                    <li><a class="active" href="/redirects/listpengguna">List Pengguna</a></li>
-                    <li><a href="/redirects/listorder">List Order</a></li>
-                    <li><a href="/redirects/listpembayaran">List Pembayaran</a></li>
-                  </ul>
-                </li>
-                <li class="sub-menu">
-                  <a href="javascript:;">
-                    <i class="fa fa-book"></i>
-                    <span>Extra Pages</span>
-                    </a>
-                  <ul class="sub">
-                    <li><a href="blank.html">Blank Page</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                  </ul>
-                </li>
-                <li class="sub-menu">
-                  <a href="javascript:;">
+                  <a href="/redirects/keranjang">
                     <i class="fa fa-tasks"></i>
-                    <span>Paket Kelas</span>
+                    <span>Keranjangku</span>
                     </a>
-                  <ul class="sub">
-                    <li><a href="advanced_form_components.html">Upload File Paket Kelas</a></li>
-                    <li><a href="form_validation.html">Edit File Paket Kelas</a></li>
-                  </ul>
                 </li>
               </ul>
               <!-- sidebar menu end-->
@@ -161,21 +136,25 @@
                 <p class="fst-italic text-center">{{$langganan->harga}}</p>
                 <p class="card-text">{{$langganan->keterangan}}</p>
                 <div class="col text-center">
+                  <?php $check=0 ?>
                   @foreach ($langganan->users as $p)
                   @if ($iduser == $p->pivot->user_id && $langganan->id == $p->pivot->langganan_id)
+                <?php $check++ ?>  
                     <a href="/redirects/{{$langganan->id}}/kelas  " class="btn btn-success btn-lg">buka</a>
-                  @else
-                    <div id="beli{{$langganan->nama_langganan}}">
-                    <form action="" method="POST" enctype="multipart/from-data">
-                      @csrf
-                     <input type="hidden" name="user_id" value="{{$iduser}}">
-                     <input type="hidden" name="nama_order" value="{{$langganan->nama_langganan}}">
-                     <input type="hidden" name="harga" value="{{$langganan->harga}}">
-                      <input type="submit" href="/redirects/keranjang" class="btn btn-success" value="Beli">
-                     </form>
-                    </div>             
+                               
                   @endif
                   @endforeach
+                  @if($check == 0)
+                  <div id="beli{{$langganan->nama_langganan}}">
+                  <form action="" method="POST" enctype="multipart/from-data">
+                    @csrf
+                   <input type="hidden" name="user_id" value="{{$iduser}}">
+                   <input type="hidden" name="nama_order" value="{{$langganan->nama_langganan}}">
+                   <input type="hidden" name="harga" value="{{$langganan->harga}}">
+                    <input type="submit" href="/redirects/keranjang" class="btn btn-success" value="Beli">
+                   </form>
+                  </div>
+                  @endif
                 </div>
               </div>
             </div>
@@ -186,7 +165,6 @@
 
       </div>
     </section><!-- End Events Section -->
-      </section>
       <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT -->
