@@ -7,6 +7,8 @@ use App\Models\Langganan;
 use App\Models\User;
 use App\Models\Materi;
 use App\Models\Modul;
+use App\Models\Exam;
+use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -223,4 +225,66 @@ class AdminController extends Controller
         $modul->delete();
         return redirect('redirects/listmodul')->with('sukses', 'Data berhasil dihapus');
     }
-}
+    //ini buat list exams doang
+    public function listExams() {
+        $role=Auth::user()->role;
+        if($role == '1'){
+            $dataExams= Exam::get();
+            $dataLangganan = Langganan::get();
+        return view('admin/listexams')->with(compact('dataExams','dataLangganan'));
+        }else {
+            return redirect('/redirects');
+        }
+    }
+    public function storeExams(Request $request)
+    {
+        // dd($request);
+        Exam::create($request->all());
+        return redirect('redirects/listexams')->with('sukses', 'Data berhasil diinput');
+    }
+
+    public function updateExams(Request $request)
+    {
+        // dd($request);
+        $exams = Exam::findOrFail($request->id);
+        $exams->update($request->all());
+        return redirect('redirects/listexams')->with('sukses', 'Data berhasil diupdate');
+    }
+    public function destroyExams(Request $request)
+    {
+        $exams = Exam::findOrFail($request->id);
+        $exams->delete();
+        return redirect('redirects/listexams')->with('sukses', 'Data berhasil dihapus');
+    }
+    //ini buat crud quiz doang
+    public function quiz($id) {
+        $role=Auth::user()->role;
+        if($role == '1'){
+            $dataQuestions= Question::get()->where('exam_id',$id);
+            // dd($dataQuestions);
+        return view('admin/questions')->with(compact('dataQuestions','id'));
+        }else {
+            return redirect('/redirects');
+        }
+    }
+        public function storeQuiz(Request $request, $id)
+        {
+            dd($request);
+            Question::create($request->all());
+            return redirect('redirects/listexams')->with('sukses', 'Data berhasil diinput');
+        }
+    
+        public function updateQuiz(Request $request, $id)
+        {
+            // dd($request);
+            $questions = Question::findOrFail($request->id);
+            $questions->update($request->all());
+            return redirect('redirects/listexams')->with('sukses', 'Data berhasil diupdate');
+        }
+        public function destroyQuiz(Request $request, $id)
+        {
+            $questions = Question::findOrFail($request->id);
+            $questions->delete();
+            return redirect('redirects/listexams')->with('sukses', 'Data berhasil dihapus');
+        }
+    }

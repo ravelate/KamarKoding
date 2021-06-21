@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>ADMIN - List</title>
+  <title>List - Modul</title>
 
   <!-- Favicons -->
   <link href="adminassets/img/favicon.png" rel="icon">
@@ -108,11 +108,12 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Materi & Modul</span>
+              <span>Materi & Modul & Quiz</span>
               </a>
             <ul class="sub">
               <li><a href="/redirects/listmateri">List Materi</a></li>
               <li><a href="/redirects/listmodul">List Modul</a></li>
+              <li><a href="/redirects/listexams">List Exams</a></li>
             </ul>
           </li>
         </ul>

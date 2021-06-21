@@ -57,7 +57,17 @@ Route::delete('redirects/listmateri',[AdminController::class,'destroymateri']);
 Route::get('redirects/listmodul',[AdminController::class,'listmodul']);
 Route::post('redirects/listmodul', [AdminController::class,'storemodul']);
 Route::put('redirects/listmodul',[AdminController::class,'updatemodul']);
-Route::delete('redirects/modul',[AdminController::class,'destroymodul']);
+Route::delete('redirects/listmodul',[AdminController::class,'destroymodul']);
+//admin akses fitur list exams
+Route::get('redirects/listexams',[AdminController::class,'listexams']);
+Route::post('redirects/listexams', [AdminController::class,'storeexams']);
+Route::put('redirects/listexams',[AdminController::class,'updateexams']);
+Route::delete('redirects/listexams',[AdminController::class,'destroyexams']);
+//admin akses fitur crud quiz
+Route::get('redirects/quiz/{id}',[AdminController::class,'quiz']);
+Route::post('/redirects/quiz/{id}',[AdminController::class,'storequiz']);
+Route::put('/redirects/quiz/{id}',[AdminController::class,'updatequiz']);
+Route::delete('/redirects/quiz/{id}',[AdminController::class,'destroyquiz']);
 //------------------------------------user------------------------------------------------//
 // ::::::::::::::::::::::::::::::::::: Pembelian Pengguna ::::::::::::::::::::::::::::::::::::: //
 // beli didashboard
@@ -68,3 +78,4 @@ Route::post('redirects/keranjang',[UserController::class,'storekeranjang']);
 Route::delete('redirects/keranjang',[UserController::class,'destroykeranjang']);
 //materi users
 Route::get('redirects/{id}/kelas',[UserController::class,'kelas']);
+Route::get('redirects/{id}/exams',[UserController::class,'exams']);

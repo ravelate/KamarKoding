@@ -292,6 +292,20 @@
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
+          <div class="container">
+            <div class="testbox">
+                <form>
+                  <div class="form-group">
+                    <label for="nama">Quiz</label>
+                  </div>
+                  @foreach ($dataExams as $exams)
+                  <div class="form-group">
+                  <a href="/redirects/{{$exams->id}}/exams" class="form-control">{{$exams->nama_ujian}}</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+                  @endforeach
             @foreach ($dataMateri as $materi)
       <div class="container">
         <div class="testbox">

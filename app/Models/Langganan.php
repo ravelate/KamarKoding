@@ -17,4 +17,9 @@ class Langganan extends Model
     {
         return $this->hasMany(Materi::class);
     }
+    public function exams()
+    {
+        return $this->hasMany(Exam::class);
+    }
+
 }

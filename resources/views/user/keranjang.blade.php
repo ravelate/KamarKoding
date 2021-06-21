@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>ADMIN - List</title>
+  <title>Keranjang</title>
 
   <!-- Favicons -->
   <link href="adminassets/img/favicon.png" rel="icon">
