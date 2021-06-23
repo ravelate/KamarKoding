@@ -55,7 +55,7 @@
       height: inherit;
       padding: 20px;
       }
-      form {
+      .bisa {
       width: 100%;
       padding: 20px;
       border-radius: 6px;
@@ -319,21 +319,21 @@
         <section class="wrapper">
 
             <div class="container" width="60%">
-                <div class="testbox">
-                    <form>
+                <div class="testbox bisa">
+                  
                         <p style="color: red">perhatikan peraturan quiz sebagai berikut!</p>
                         <p>jumlah soal diharuskan memiliki <a style="color: red">10</a> buah soal supaya bisa diakses oleh pengguna</p>
                         <p>Jika jumlah soal kurang dari yang ditentukan maka soal <a style="color: red">tidak akan bisa dikerjakan</a> oleh pengguna</p>
                           {{-- Ini Tombol Tambah --}}
-                          <a class="btn btn-primary pull-right" data-toggle="modal" data-target="#tambah"><span>Tambah Ujian Baru</span></a>
+                          <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#tambah"><span>Tambah Ujian Baru</span></button>
                           <div id="tambah" class="modal fade" role="dialog">
                        <div class="modal-dialog">
                            <div class="modal-content">
                                <div class="modal-header">
                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                   
+
                                </div>
-                               <form action="" method="POST" enctype="multipart/from-data">             
+                               <form action="/redirects/{{$id}}" method="POST" enctype="multipart/from-data">             
                                @csrf
                                    <div class="modal-body">
                                     <input type="hidden" name="exam_id" value="{{$id}}">
@@ -376,13 +376,12 @@
                                    </div>
                                    </div>
                                    {{-- end tombol tambah --}}	
-                    </form>
                 </div>
             </div>
             @foreach ($dataQuestions as $question)
           <div class="container">
             <div class="testbox">
-                <form>
+              <div class="bisa">
                   <div class="form-group">
                     <label for="nama">{{$question->soal}}</label>
                   </div>
@@ -470,7 +469,7 @@
                                       </div>
                                       {{-- end tombol hapus --}}
                   </div>
-                </form>
+              </div>
               </div>
             </div>
             @endforeach

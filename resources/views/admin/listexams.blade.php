@@ -378,7 +378,7 @@
                           <td><a>{{$d->keterangan}}</a></td>
                           <td>{{$d->created_at}}</td> 
                             <td>
-                                <a href="/redirects/quiz/{{$d->id}}" class="btn btn-success" style="color: white">QUIZ</a>        
+                                <a href="/redirects/{{$d->id}}/quiz" class="btn btn-success" style="color: white">QUIZ</a>        
                              <!-- ini tombol edit -->
                       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit{{$d->id}}" data-formid="{{$d->id}}">Edit</button>
                       <div id="edit{{$d->id}}" class="modal fade" role="dialog" id="{{$d->id}}">

@@ -64,10 +64,10 @@ Route::post('redirects/listexams', [AdminController::class,'storeexams']);
 Route::put('redirects/listexams',[AdminController::class,'updateexams']);
 Route::delete('redirects/listexams',[AdminController::class,'destroyexams']);
 //admin akses fitur crud quiz
-Route::get('redirects/quiz/{id}',[AdminController::class,'quiz']);
-Route::post('/redirects/quiz/{id}',[AdminController::class,'storequiz']);
-Route::put('/redirects/quiz/{id}',[AdminController::class,'updatequiz']);
-Route::delete('/redirects/quiz/{id}',[AdminController::class,'destroyquiz']);
+Route::get('redirects/{id}/quiz',[AdminController::class,'quiz']);
+Route::post('/redirects/{id}',[AdminController::class,'storequiz']);
+Route::put('/redirects/{id}',[AdminController::class,'updatequiz']);
+Route::delete('/redirects/{id}/quiz',[AdminController::class,'destroyquiz']);
 //------------------------------------user------------------------------------------------//
 // ::::::::::::::::::::::::::::::::::: Pembelian Pengguna ::::::::::::::::::::::::::::::::::::: //
 // beli didashboard

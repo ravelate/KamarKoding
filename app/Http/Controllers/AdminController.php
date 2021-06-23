@@ -269,7 +269,7 @@ class AdminController extends Controller
     }
         public function storeQuiz(Request $request, $id)
         {
-            dd($request);
+            // dd($request);
             Question::create($request->all());
             return redirect('redirects/listexams')->with('sukses', 'Data berhasil diinput');
         }
