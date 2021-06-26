@@ -338,6 +338,14 @@
                                             <input type="text" name="nama_materi" class="from-control" id="nm_brg" style="color: black" required>
                                         </div>
                                         <div class="from-group">
+                                          <label class="control-label" for="nm_brg" style="color: black"> Link Gambar: </label>
+                                          <input type="text" name="gambar" class="from-control" id="nm_brg" style="color: black" required>
+                                      </div>
+                                      <div class="from-group">
+                                        <label class="control-label" for="nm_brg" style="color: black"> Link youtube: </label>
+                                        <input type="text" name="youtube" class="from-control" id="nm_brg" style="color: black" required>
+                                    </div>
+                                        <div class="from-group">
                                             <label class="control-label" for="dibuat_oleh" style="color: black">Dibuat Oleh: </label>
                                              <select class="from-control" name="dibuat_oleh" style="color: black">
                                                 @foreach ($dataUser as $u)
@@ -408,6 +416,14 @@
                                         <label class="control-label" for="nm_brg" style="color: black"> Nama Materi: </label>
                                         <input type="text" name="nama_langganan" class="from-control" id="nm_brg" style="color: black" value="{{$d->nama_materi}}" required>
                                     </div>
+                                    <div class="from-group">
+                                      <label class="control-label" for="nm_brg" style="color: black"> Link Gambar: </label>
+                                      <input type="text" name="gambar" class="from-control" id="nm_brg" style="color: black" value="{{$d->gambar}}" required>
+                                  </div>
+                                  <div class="from-group">
+                                    <label class="control-label" for="nm_brg" style="color: black"> Link youtube: </label>
+                                    <input type="text" name="youtube" class="from-control" id="nm_brg" style="color: black" value="{{$d->youtube}}" required>
+                                </div>
                                     <div class="from-group">
                                         <label class="control-label" for="dibuat_oleh">Dibuat Oleh: </label>
                                          <select class="from-control" name="dibuat_oleh">

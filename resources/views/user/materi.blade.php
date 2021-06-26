@@ -302,26 +302,35 @@
                   <div class="form-group">
                   <a href="/redirects/{{$exams->id}}/exams" class="form-control">{{$exams->nama_ujian}}</a>
                   </div>
+                  @endforeach
                 </form>
               </div>
             </div>
-                  @endforeach
             @foreach ($dataMateri as $materi)
       <div class="container">
         <div class="testbox">
             <form>
-              <div class="banner">
-                <h1>{{$materi->nama_materi}}</h1>
-              </div>
-              <br>
               <div class="form-group">
-                <label for="nama">Dibuat Oleh {{$materi->dibuat_oleh}}</label>
+              <img src="{{$materi->gambar}}" width="1050"> 
               </div>
+              <div class="form-group">
+                <h3 class="text-center">{{$materi->nama_materi}}</h3>
+              </div>
+              
+              <div class="form-group">
+                <p for="nama" class="text-center">Dibuat Oleh {{$materi->dibuat_oleh}}</p>
+              </div>
+              <br><br>
+              <div class="form-group">
+                <iframe width="1050" height="600"
+                src="{{$materi->youtube}}">
+                </iframe>
+              </div>
+              <p>Modul Materi:</p>
               @foreach ($materi->moduls as $modul)
               <div class="form-group">
               <a href="{{$modul->link_modul}}" class="form-control">{{$modul->nama_modul}}</a>
-              </div>
-                                
+              </div>             
               @endforeach
             </form>
           </div>

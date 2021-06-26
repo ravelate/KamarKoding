@@ -17,7 +17,9 @@ class CreateMaterisTable extends Migration
             $table->id();
             $table->foreignId('langganan_id') ->references('id') ->on('langganans') ->onDelete('cascade') ->onUpdate('cascade');
             $table->string('nama_materi');
+            $table->string('gambar');
             $table->string('dibuat_oleh');
+            $table->string('youtube');
             $table->timestamps();
         });
     }
